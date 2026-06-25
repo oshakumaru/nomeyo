@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": 1,
+  "_comment": "母艦カードゲームのカードプール。デッキ概念なし=cardRatiosの比率に基づき無限ランダムドロー。各カードはsystem(系統)で分類。weightは同系統内での相対出現率。minPlayersは出現に必要な最小人数。",
+
+  "cardRatios": {
+    "default": { "nominate": 25, "rate": 14, "progress": 14, "game": 30, "rule": 14, "tool": 3 }
+  },
+
+  "cards": [
+    {
+      "_section": "指名系 nominate ───────────────"
+    },
+    { "id": "nom_right", "system": "nominate", "weight": 10, "minPlayers": 3,
+      "title": { "ja": "右どなりアウト" },
+      "text": { "ja": "あなたの右の人がアウト！" } },
+    { "id": "nom_left", "system": "nominate", "weight": 10, "minPlayers": 3,
+      "title": { "ja": "左どなりアウト" },
+      "text": { "ja": "あなたの左の人がアウト！" } },
+    { "id": "nom_self", "system": "nominate", "weight": 8, "minPlayers": 2,
+      "title": { "ja": "自分アウト" },
+      "text": { "ja": "残念、引いたあなたがアウト！" } },
+    { "id": "nom_pick", "system": "nominate", "weight": 10, "minPlayers": 3,
+      "title": { "ja": "指名アウト" },
+      "text": { "ja": "好きな人を1人選んでアウトにできる。" } },
+    {
+      "_section": "リアクション系 nominate(ジェスチャー即決・全面ビジュアルカード) ───────────────",
+      "_note": "MEDUSA型。英語タイトルは画像にベイク。下部のtextが動作説明(JSON)。即アウト=レート消費に乗る。"
+    },
+    { "id": "nom_medusa", "system": "nominate", "weight": 10, "minPlayers": 2,
+      "title": { "ja": "MEDUSA" },
+      "text": { "ja": "最初に目が合った人がアウト！" } },
+    { "id": "nom_rain", "system": "nominate", "weight": 9, "minPlayers": 3,
+      "title": { "ja": "ゲリラ豪雨" },
+      "text": { "ja": "両手を頭の上で重ねて雨をしのぐポーズ。一番遅い人がアウト！" } },
+    { "id": "nom_earthquake", "system": "nominate", "weight": 9, "minPlayers": 3,
+      "title": { "ja": "地震発生" },
+      "text": { "ja": "両手をテーブルにつく。一番遅い人がアウト！" } },
+    { "id": "nom_bamboo", "system": "nominate", "weight": 9, "minPlayers": 3,
+      "title": { "ja": "BAMBOO" },
+      "text": { "ja": "両手を頭の上に伸ばしてタケノコのポーズ。一番遅い人がアウト！" } },
+    { "id": "nom_highfive", "system": "nominate", "weight": 9, "minPlayers": 3,
+      "title": { "ja": "HIGH FIVE" },
+      "text": { "ja": "となりの人とハイタッチ！あぶれた人がアウト！" } },
+
+    {
+      "_section": "お題指名系 nominate(お題変更不可) ───────────────",
+      "_note": "topicsのgame=nominate_topic から1問を表示。カード内でお題変更ボタンは出さない。"
+    },
+    { "id": "nom_topic", "system": "nominate", "weight": 18, "minPlayers": 3,
+      "title": { "ja": "お題でアウト" },
+      "flow": "nominate_topic", "lockTopic": true },
+
+    {
+      "_section": "レート系 rate ───────────────"
+    },
+    { "id": "rate_x2", "system": "rate", "weight": 12, "minPlayers": 2,
+      "title": { "ja": "次のアウト ×2" },
+      "text": { "ja": "次にアウトになった人全員、レート×2！" },
+      "effect": { "type": "rateMultiply", "value": 2 } },
+    { "id": "rate_x3", "system": "rate", "weight": 6, "minPlayers": 2,
+      "title": { "ja": "次のアウト ×3" },
+      "text": { "ja": "次にアウトになった人全員、レート×3！" },
+      "effect": { "type": "rateMultiply", "value": 3 } },
+    { "id": "rate_reset", "system": "rate", "weight": 5, "minPlayers": 2,
+      "title": { "ja": "レートリセット" },
+      "text": { "ja": "現在のレートを×1に戻す。" },
+      "effect": { "type": "rateReset" } },
+
+    {
+      "_section": "進行系 progress ───────────────"
+    },
+    { "id": "prog_reverse", "system": "progress", "weight": 8, "minPlayers": 3,
+      "title": { "ja": "リバース" },
+      "text": { "ja": "順番が逆回りになる。" },
+      "effect": { "type": "reverse" } },
+    { "id": "prog_skip", "system": "progress", "weight": 8, "minPlayers": 3,
+      "title": { "ja": "スキップ" },
+      "text": { "ja": "次の人をとばして、その次の人へ。" },
+      "effect": { "type": "skip" } },
+    { "id": "prog_assign_next", "system": "progress", "weight": 6, "minPlayers": 3,
+      "title": { "ja": "次は誰がめくる？" },
+      "text": { "ja": "次にめくる人を自由に指名しよう。" } },
+
+    {
+      "_section": "ルール系 rule ───────────────",
+      "_note": "rule_apply は rules リストから継続ルールを1つ有効化。rule_clear_one / rule_clear_all は解除カード。"
+    },
+    { "id": "rule_apply", "system": "rule", "weight": 16, "minPlayers": 2,
+      "title": { "ja": "新ルール発動" },
+      "flow": "rule_apply", "lockTopic": true },
+    { "id": "rule_clear_one", "system": "rule", "weight": 5, "minPlayers": 2,
+      "title": { "ja": "ルール1つ解除" },
+      "text": { "ja": "今ある有効ルールから1つ選んで解除する。" },
+      "effect": { "type": "ruleClearOne" } },
+    { "id": "rule_clear_all", "system": "rule", "weight": 3, "minPlayers": 2,
+      "title": { "ja": "全ルール解除" },
+      "text": { "ja": "今ある有効ルールをすべて解除する。" },
+      "effect": { "type": "ruleClearAll" } },
+
+    {
+      "_section": "ツール系 tool ───────────────"
+    },
+    { "id": "game_master", "system": "tool", "weight": 10, "minPlayers": 2,
+      "title": { "ja": "ゲームマスター" },
+      "text": { "ja": "好きなゲームを選ぼう。このアプリに無い遊びでもOK！迷ったら一覧から選んでも◎" },
+      "flow": "game_master" }
+  ],
+
+  "_gameCardsNote": "ゲーム系(system=game)のカードは games レジストリの callableFromCard:true のゲームから動的生成。お題差し替えボタン付き。content.json 側で定義。"
+}
