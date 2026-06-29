@@ -3,11 +3,11 @@
   "contentVersion": 1,
   "_comment": "ゲームレジストリ・お題・継続ルール。全テキストは言語マップ{ja:...}。tagsで難易度等を将来絞り込み。flowはバンドル済みフローコンポーネント識別子。",
 
-  "_packNote": "各topic/rule/cardの pack フィールドで課金境界を表す。pack 未指定または \"free\" は恒久無料。有料パックは price 付きで packs に定義し、購入(entitlement)があるユーザーにのみ出題する。hardタグのお題はv1.1から hard_pack に完全隔離する。",
+  "_packNote": "各topic/rule/cardの pack フィールドはコンテンツ分類用。v1.1では課金を行わず、free / hard_pack を出題対象にする。premium_topics は将来施策用にJSONへ残すが、初回リリースでは出題しない。",
   "packs": [
-    { "id": "free", "name": { "ja": "標準コンテンツ" }, "price": 0, "_note": "恒久無料。pack未指定のお題はすべてこれに属する扱い。" },
-    { "id": "hard_pack", "name": { "ja": "ハードお題パック" }, "price": 480, "_note": "v1.1入口商品。既存hardタグのお題を完全隔離する。" },
-    { "id": "premium_topics", "name": { "ja": "プレミアムお題パック" }, "price": 980, "_note": "v1.1有料追加お題。量産前の種として各対象ゲームに1問ずつ追加する。" }
+    { "id": "free", "name": { "ja": "標準コンテンツ" }, "price": 0, "_note": "無料コンテンツ。" },
+    { "id": "hard_pack", "name": { "ja": "ハードお題" }, "price": 0, "_note": "v1.1では無料開放。hardタグのお題を分類する。" },
+    { "id": "premium_topics", "name": { "ja": "追加お題" }, "price": 0, "_note": "将来施策用。v1.1初回リリースではアプリ側で出題しない。" }
   ],
 
   "games": [
