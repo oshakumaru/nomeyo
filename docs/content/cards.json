@@ -4,7 +4,7 @@
   "_comment": "母艦カードゲームのカードプール。デッキ概念なし=cardRatiosの比率に基づき無限ランダムドロー。各カードはsystem(系統)で分類。weightは同系統内での相対出現率。minPlayersは出現に必要な最小人数。",
 
   "cardRatios": {
-    "default": { "nominate": 25, "rate": 14, "progress": 14, "game": 30, "rule": 14, "tool": 3 }
+    "default": { "nominate": 25, "rate": 13, "progress": 13, "game": 30, "rule": 10, "tool": 9 }
   },
 
   "cards": [
@@ -28,20 +28,20 @@
       "_note": "MEDUSA型。英語タイトルは画像にベイク。下部のtextが動作説明(JSON)。即アウト=レート消費に乗る。"
     },
     { "id": "nom_medusa", "system": "nominate", "weight": 10, "minPlayers": 2,
-      "title": { "ja": "MEDUSA" },
-      "text": { "ja": "最初に目が合った人がアウト！" } },
-    { "id": "nom_rain", "system": "nominate", "weight": 9, "minPlayers": 3,
+      "title": { "ja": "メデューサ" },
+      "text": { "ja": "あなたと最初に目が合った人がアウト！" } },
+    { "id": "nom_rain", "system": "nominate", "weight": 9, "minPlayers": 2,
       "title": { "ja": "ゲリラ豪雨" },
       "text": { "ja": "両手を頭の上で重ねて雨をしのぐポーズ。一番遅い人がアウト！" } },
-    { "id": "nom_earthquake", "system": "nominate", "weight": 9, "minPlayers": 3,
+    { "id": "nom_earthquake", "system": "nominate", "weight": 9, "minPlayers": 2,
       "title": { "ja": "地震発生" },
       "text": { "ja": "両手をテーブルにつく。一番遅い人がアウト！" } },
-    { "id": "nom_bamboo", "system": "nominate", "weight": 9, "minPlayers": 3,
-      "title": { "ja": "BAMBOO" },
+    { "id": "nom_bamboo", "system": "nominate", "weight": 9, "minPlayers": 2,
+      "title": { "ja": "タケノコニョッキ" },
       "text": { "ja": "両手を頭の上に伸ばしてタケノコのポーズ。一番遅い人がアウト！" } },
     { "id": "nom_highfive", "system": "nominate", "weight": 9, "minPlayers": 3,
-      "title": { "ja": "HIGH FIVE" },
-      "text": { "ja": "となりの人とハイタッチ！あぶれた人がアウト！" } },
+      "title": { "ja": "ハイタッチ" },
+      "text": { "ja": "誰かとハイタッチ！一番遅い組かタッチできなかった人がアウト！" } },
 
     {
       "_section": "お題指名系 nominate(お題変更不可) ───────────────",
@@ -76,11 +76,12 @@
       "effect": { "type": "reverse" } },
     { "id": "prog_skip", "system": "progress", "weight": 8, "minPlayers": 3,
       "title": { "ja": "スキップ" },
-      "text": { "ja": "次の人をとばして、その次の人へ。" },
+      "text": { "ja": "あなたの番をスキップして、次の人へ。" },
       "effect": { "type": "skip" } },
     { "id": "prog_assign_next", "system": "progress", "weight": 6, "minPlayers": 3,
       "title": { "ja": "次は誰がめくる？" },
-      "text": { "ja": "次にめくる人を自由に指名しよう。" } },
+      "text": { "ja": "次にめくる人を自由に指名しよう。" },
+      "effect": { "type": "assignNext" } },
 
     {
       "_section": "ルール系 rule ───────────────",
