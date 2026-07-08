@@ -30,7 +30,8 @@
     { "id": "rule_lefthand", "title": { "ja": "LEFT HAND ONLY" }, "text": { "ja": "右手禁止" } },
     { "id": "rule_knock", "title": { "ja": "KNOCK KNOCK" }, "text": { "ja": "置く時トントン" } },
     { "id": "rule_eyes", "title": { "ja": "DONT SPEAK ENGLISH" }, "text": { "ja": "外来語禁止" } },
-    { "id": "rule_nhie_story", "title": { "ja": "STORY TIME" }, "text": { "ja": "経験者は経験を語る" } }
+    { "id": "rule_eyes", "title": { "ja": "DONT SPEAK ENGLISH" }, "text": { "ja": "一人称「拙者」" } },
+    { "id": "rule_cat", "title": { "ja": "CAT LANGUAGE" }, "text": { "ja": "語尾「にゃん」" } }
   ],
 
   "topics": [
